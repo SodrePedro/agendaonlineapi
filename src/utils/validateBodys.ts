@@ -44,47 +44,18 @@ export function validateCreateUserBody(user: ICreateUserData) {
 }
 
 export const validateCreateClientBody = async (client: ICreateClientData) => {
-    if(!client.email) {
-        const res = {
-            message: 'E-mail é obrigatorio!',
-            error: true
+    let requiredFields = [
+        "name",
+        "email",
+        "address",
+        "document"
+    ];
+
+    for(let field of requiredFields) {
+        if(!client[field as keyof ICreateClientData]) return {
+            error: true,
+            message: `Campo "${field}" é obrigatorio`
         }
-
-        return res;
-    }
-    if(!client.name) {
-        const res = {
-            message: 'Nome é obrigatorio!',
-            error: true
-        }
-
-        return res;
-    }
-    if(!client.address) {
-        const res = {
-            message: 'Endereço é obrigatorio!',
-            error: true
-        }
-
-        return res;
-    }
-
-    if(!client.document) {
-        const res = {
-            message: 'CPF é obrigatorio!',
-            error: true
-        }
-
-        return res;
-    }
-
-    if(!client.userId) {
-        const res = {
-            message: 'Algo aconteceu de errado. Tente novamente!',
-            error: true
-        }
-
-        return res;
     }
     
     return {
