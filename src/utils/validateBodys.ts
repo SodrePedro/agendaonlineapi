@@ -48,7 +48,8 @@ export const validateCreateClientBody = async (client: ICreateClientData) => {
         "name",
         "email",
         "address",
-        "document"
+        "document",
+        "cellphone"
     ];
 
     for(let field of requiredFields) {

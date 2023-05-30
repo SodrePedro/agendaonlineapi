@@ -1,6 +1,6 @@
 export type ICreateClientData = {
     name: string
-    cellphone?: string
+    cellphone: string
     email: string
     address: string
     document: string
